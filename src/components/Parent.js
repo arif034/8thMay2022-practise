@@ -1,36 +1,40 @@
 import { Component } from "react";
+import Child from "./Child.js";
 
 class Parent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0
+      tempName: "",
+      name: ""
     };
   }
-  incrementCount = () => {
-    this.setState((prevState) => {
-      return prevState.count < 10
-        ? { count: prevState.count + 1 }
-        : { count: 10 };
+
+  setName = (event) => {
+    this.setState(() => {
+      return { tempName: event.target.value };
     });
   };
 
-  decrementCount = () => {
-    this.setState((prevState) => {
-      return prevState.count > 0
-        ? { count: prevState.count - 1 }
-        : { count: 0 };
-    });
-  };
-
-  resetCount = () => {
-    this.setState((prevState) => {
-      return { count: 0 };
+  updateName = () => {
+    this.setState(() => {
+      return { name: this.state.tempName };
     });
   };
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <input
+          placeholder="Enter name here..."
+          value={this.state.tempName}
+          onChange={this.setName}
+        />
+        <br />
+        <button onClick={this.updateName}>Submit</button>
+        <Child name={this.state.name} />
+      </div>
+    );
   }
 }
 export default Parent;
