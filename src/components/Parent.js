@@ -30,17 +30,7 @@ class Parent extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <button onClick={this.incrementCount}>Increment</button>
-        <br />
-        <button onClick={this.decrementCount}>Decrement</button>
-        <br />
-        <button onClick={this.resetCount}>Reset</button>
-        <br />
-        {this.state.count}
-      </div>
-    );
+    return <div></div>;
   }
 }
 export default Parent;
